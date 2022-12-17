@@ -1,0 +1,66 @@
+﻿.modif-save-svg {
+    width: 80px;
+}
+.modif-delete-svg {
+    width: 40px;
+    stroke: #fff;
+}
+.faList.modif {
+    width: 30px;
+    fill: #fff;
+}
+.faCircle {
+    width: 50px;
+    fill: cyan;
+}
+
+.faChecked {
+    width: 30px;
+    fill:green;
+}
+.faGrinStar {
+    width: 30px;
+    fill: indigo;
+}
+.faList {
+    width: 40px;
+}
+
+
+.faCheck {
+    width: 40px;
+}
+
+.faCloseCircle {
+    width: 50px;
+    height: 40px;
+    fill: #e5440c;
+}
+
+.faExpand {
+    width: 30px;
+}
+
+.faReplace {
+    fill: #fff;
+}
+
+.faGoRight {
+    fill: #fff;
+}
+
+.faCirclePlus {    
+    height: 50px;
+    width: 50px;
+    fill: rgb(255,255,255,.5);
+    stroke: #106e47;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.faEdit {
+    fill: darkcyan;
+    stroke-width: 3;
+    stroke: green;
+}

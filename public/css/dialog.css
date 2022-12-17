@@ -1,0 +1,42 @@
+﻿#dialog {
+    display: none;
+    width: 100vw;
+    height: var(--vh);
+    background: hsl(0, 0%, 90%, .8);
+    position: absolute;
+    top: 0;
+    align-items: center;
+    z-index: 3;
+    font-size: .8em;
+}
+
+.dialog-visuals {
+    background: #fff;
+    width: 100vw;
+}
+.dialog-message {
+    padding: 20px 20px 50px 20px ;
+    text-align: center;
+}
+
+.dialog-response {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.dialog-button {
+    display: flex;
+    height: 15vw;
+    width: 15vw;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #878383;
+    border-radius:30px;
+}
+
+
+.dialog-close {
+    display: none;
+    width: 30vw;
+}

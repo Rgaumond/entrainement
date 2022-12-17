@@ -1,0 +1,138 @@
+.modif-container {
+  width: 100vw;
+  height: var(--vh);
+  overflow: hidden;
+}
+
+.modif-title {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  font-size: 0.8em;
+}
+.modif-title::before {
+  content: attr(type);
+  position: absolute;
+  top: 10px;
+  font-size: 1.2em;
+}
+.addChild {
+  position: absolute;
+  right: 30px;
+}
+
+.childContainer {
+  overflow-y: auto;
+  position: relative;
+  padding-top: 10px;
+}
+
+.childLiAction {
+  position: absolute;
+  right: 0;
+  background: darkgoldenrod;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: 2px 0;
+  max-width: 220px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: width 0.2s ease-out;
+}
+
+.childlidelete {
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.childlidelete svg {
+  height: 30px;
+}
+
+.childlireplace {
+  background: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+.childlireplace svg {
+  height: 30px;
+}
+.childliactionsClose {
+  background: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.childliactionsClose svg {
+  height: 30px;
+}
+
+.modif-delete-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+.modif-delete {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: #ff0000;
+}
+
+.modif-save {
+  position: relative;
+  display: flex;
+}
+
+.modif-add {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: #0094ff;
+  color: #fff;
+}
+
+.modif-nav {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px 10px 0;
+}
+.name-box {
+  font-size: 0.8em;
+  text-align: center;
+  padding: 10px 0;
+  border: none;
+  background: var(--greytone9);
+}

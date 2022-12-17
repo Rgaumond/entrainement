@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+      http-equiv="ScreenOrientation"
+    />
+
+    <title>Entrainement</title>
+    <link type="text/css" rel="stylesheet" href="../css/root/root.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/roboto.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/hamburger.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/modif.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/list.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/buttons.css" />
+  </head>
+  <body>
+    <div class="modif-title"></div>
+    <div class="modif-container"></div>
+    <div class="modif-subContainer"></div>
+    <div class="modif-nav">
+      <div class="modif-delete-container">
+        <div class="modif-delete" label="Delete">
+          <svg
+            class="modif-delete-svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 6h16l-1.58 14.22A2 2 0 0 1 16.432 22H7.568a2 2 0 0 1-1.988-1.78L4 6z"
+            ></path>
+            <path
+              d="M7.345 3.147A2 2 0 0 1 9.154 2h5.692a2 2 0 0 1 1.81 1.147L18 6H6l1.345-2.853z"
+            ></path>
+            <path d="M2 6h20"></path>
+            <path d="M10 11v5"></path>
+            <path d="M14 11v5"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="modif-save" label="Save modifications">
+        <svg class="modif-save-svg" viewBox="0 0 80 80" fill="none">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M53.1716 13.1716C52.4214 12.4214 51.404 12 50.3431 12H16C13.7909 12 12 13.7909 12 16V64C12 66.2091 13.7909 68 16 68H64C66.2091 68 68 66.2091 68 64V29.6569C68 28.596 67.5786 27.5786 66.8284 26.8284L53.1716 13.1716Z"
+            fill="#2F80ED"
+          ></path>
+          <path
+            d="M66.8284 26.8284L68.2426 25.4142L66.8284 26.8284ZM53.1716 13.1716L51.7574 14.5858L53.1716 13.1716ZM16 14H50.3431V10H16V14ZM14 64V16H10V64H14ZM64 66H16V70H64V66ZM66 29.6569V64H70V29.6569H66ZM51.7574 14.5858L65.4142 28.2426L68.2426 25.4142L54.5858 11.7574L51.7574 14.5858ZM70 29.6569C70 28.0656 69.3679 26.5394 68.2426 25.4142L65.4142 28.2426C65.7893 28.6177 66 29.1264 66 29.6569H70ZM64 70C67.3137 70 70 67.3137 70 64H66C66 65.1046 65.1046 66 64 66V70ZM10 64C10 67.3137 12.6863 70 16 70V66C14.8954 66 14 65.1046 14 64H10ZM50.3431 14C50.8736 14 51.3823 14.2107 51.7574 14.5858L54.5858 11.7574C53.4606 10.6321 51.9344 10 50.3431 10V14ZM16 10C12.6863 10 10 12.6863 10 16H14C14 14.8954 14.8954 14 16 14V10Z"
+            fill="#2F80ED"
+          ></path>
+          <path
+            d="M48 27V13C48 12.4477 47.5523 12 47 12H21C20.4477 12 20 12.4477 20 13V27C20 27.5523 20.4477 28 21 28H47C47.5523 28 48 27.5523 48 27Z"
+            fill="#56CCF2"
+            stroke="#56CCF2"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M35.8038 38C39.0192 36.1436 42.9808 36.1436 46.1962 38C49.4115 39.8564 51.3923 43.2872 51.3923 47C51.3923 50.7128 49.4115 54.1436 46.1962 56C42.9808 57.8564 39.0192 57.8564 35.8038 56C32.5885 54.1436 30.6077 50.7128 30.6077 47C30.6077 43.2872 32.5885 39.8564 35.8038 38Z"
+            fill="#F2F2F2"
+            stroke="#F2F2F2"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <section id="hamburger">
+      <div class="home-header__hamburger" onclick="showHamburger()">
+        <svg viewBox="0 0 448 512" class="hamburgerBars">
+          <path
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+          />
+        </svg>
+      </div>
+      <div class="hamburgerContainer">
+        <div class="closeHamburger" onclick="closeHamburger()">
+          <svg viewBox="0 0 352 512" class="hamburgerBars">
+            <path
+              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROOT  -->
+    <script src="../js/root/jquery.min.js"></script>
+    <script src="../js/root/utilities.js"></script>
+    <script src="../js/root/hamburger.js"></script>
+    <script src="../js/root/translation.js"></script>
+    <script src="../js/root/hamburgerHandler.js"></script>
+    <script src="../js/root/buttons.js"></script>
+    <script src="../js/root/models.js"></script>
+    <script src="../js/APIs/exercise.js"></script>
+
+    <script src="../js/exercisePage/init.js"></script>
+    <script src="../js/exercisePage/handler.js"></script>
+    <script src="../js/exercisePage/template.js"></script>
+  </body>
+</html>

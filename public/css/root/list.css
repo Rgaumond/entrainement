@@ -1,0 +1,93 @@
+﻿.list-container {
+    display: none;
+    width: 100vw;
+    height: var(--vh);
+    overflow: hidden;
+    font-size: .8em;
+}
+
+.list-container-title {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    align-items: center;
+    margin-left: 20px;
+
+}
+.list-li-container > li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 3px;
+    background: antiquewhite;
+    position: relative;
+}
+
+.li-date{
+    font-size: .6em;
+}
+li.current {
+    background:yellow;
+    text-align:center
+}
+
+.list-title{
+    padding-right:20px;
+}
+
+.list-container-title select {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.list-li-container {
+    height: calc( var(--vh) - 55px );
+    overflow: auto;
+}
+
+.list-li-container > li.active1::after {
+    content:"";
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    background:green;
+    transform: translateX(100%);
+}
+
+.list-li-container > li.active0::after {
+    content:"";
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    background:red;
+    transform: translateX(100%);
+}
+
+.list-add-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.list-goback-button {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display:none;
+}
+
+.completed1::after {
+    content: "√";
+    background: green;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    width: 38px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 50%;
+}

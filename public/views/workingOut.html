@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+      http-equiv="ScreenOrientation"
+    />
+
+    <title>Entrainement</title>
+    <link type="text/css" rel="stylesheet" href="../css/root/root.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/roboto.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/hamburger.css" />
+    <link type="text/css" rel="stylesheet" href="../css/root/buttons.css" />
+    <link type="text/css" rel="stylesheet" href="../css/serie/numpad.css" />
+    <link type="text/css" rel="stylesheet" href="../css/serie/chrono.css" />
+    <link type="text/css" rel="stylesheet" href="../css/serie/serie.css" />
+    <style>
+      #workout-completed {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        background-color: green;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+        align-items: center;
+      }
+      #completed-message {
+        color: white;
+        font-size: 2em;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="hamburger">
+      <div class="home-header__hamburger" onclick="showHamburger()">
+        <svg viewBox="0 0 448 512" class="hamburgerBars">
+          <path
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+          />
+        </svg>
+      </div>
+      <div class="hamburgerContainer">
+        <div class="closeHamburger" onclick="closeHamburger()">
+          <svg viewBox="0 0 352 512" class="hamburgerBars">
+            <path
+              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+    <div id="series-container">
+      <div class="serie-header"></div>
+      <div id="series"></div>
+    </div>
+    <section id="input-section">
+      <div class="chrono">
+        <div class="chrono__inner">
+          <div class="chronotime" onclick="maximizeChrono()">00</div>
+          <div class="chrono__button closeChrono" onclick="chronoCompleted()">
+            <svg class="faCloseCircle" viewBox="0 0 448 512">
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+              />
+            </svg>
+          </div>
+          <div
+            class="chrono__button reduceChrono"
+            onclick="defocusSelectedSerie()"
+          >
+            <svg class="faExpand" viewBox="0 0 448 512">
+              <path
+                d="M212.686 315.314L120 408l32.922 31.029c15.12 15.12 4.412 40.971-16.97 40.971h-112C10.697 480 0 469.255 0 456V344c0-21.382 25.803-32.09 40.922-16.971L72 360l92.686-92.686c6.248-6.248 16.379-6.248 22.627 0l25.373 25.373c6.249 6.248 6.249 16.378 0 22.627zm22.628-118.628L328 104l-32.922-31.029C279.958 57.851 290.666 32 312.048 32h112C437.303 32 448 42.745 448 56v112c0 21.382-25.803 32.09-40.922 16.971L376 152l-92.686 92.686c-6.248 6.248-16.379 6.248-22.627 0l-25.373-25.373c-6.249-6.248-6.249-16.378 0-22.627z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div id="numPad" class="numPad">
+        <div class="numPad__header">test</div>
+        <div class="numPad__keyPad">
+          <div class="numPad__key" event="number">1</div>
+          <div class="numPad__key" event="number">2</div>
+          <div class="numPad__key" event="number">3</div>
+          <div class="numPad__key" event="number">4</div>
+          <div class="numPad__key" event="number">5</div>
+          <div class="numPad__key" event="number">6</div>
+          <div class="numPad__key" event="number">7</div>
+          <div class="numPad__key" event="number">8</div>
+          <div class="numPad__key" event="number">9</div>
+          <div class="numPad__key workoutList" event="workoutList">
+            <svg class="faList" viewBox="0 0 512 512">
+              <path
+                d="M80 368H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 64v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm0 160H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm416 176H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"
+              />
+            </svg>
+          </div>
+          <div class="numPad__key" event="number">0</div>
+          <div class="numPad__key enter" event="enter">
+            <svg class="faCheck" viewBox="0 0 512 512">
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="numPad__closePad" event="closePad">Close</div>
+      </div>
+    </section>
+    <div id="workout-completed">
+      <div id="completed-message">Completed</div>
+    </div>
+    <!-- ROOT  -->
+    <script src="../js/root/jquery.min.js"></script>
+    <script src="../js/root/utilities.js"></script>
+    <script src="../js/root/hamburger.js"></script>
+    <script src="../js/root/translation.js"></script>
+    <script src="../js/root/hamburgerHandler.js"></script>
+    <script src="../js/root/buttons.js"></script>
+    <script src="../js/root/models.js"></script>
+
+    <!-- EXERCISE  -->
+    <script src="../js/workingOut/init.js"></script>
+    <script src="../js/workingOut/template.js"></script>
+    <script src="../js/workingOut/set.js"></script>
+    <script src="../js/workingOut/handler.js"></script>
+    <script src="../js/workingOut/chrono.js"></script>
+    <script src="../js/workingOut/numPad.js"></script>
+  </body>
+</html>

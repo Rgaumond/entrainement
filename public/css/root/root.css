@@ -1,0 +1,133 @@
+﻿:root {
+    --radius: 0.2rem;
+    --greytone0: hsl(0, 0%, 0%)0;
+    --greytone1: hsl(0, 0%, 10%);
+    --greytone2: hsl(0, 0%, 20%);
+    --greytone3: hsl(0, 0%, 30%);
+    --greytone4: hsl(0, 0%, 40%);
+    --greytone5: hsl(0, 0%, 50%);
+    --greytone6: hsl(0, 0%, 60%);
+    --greytone7: hsl(0, 0%, 70%);
+    --greytone8: hsl(0, 0%, 80%);
+    --greytone9: hsl(0, 0%, 90%);
+    --greytone10: hsl(0, 0%, 100%);
+    --focussedSerieHeight: 170px;
+    --alice: hsl(208, 100%, 97%, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: var(--vh);
+    font-family: 'Roboto';
+    font-weight: 400;
+    background: #fff;
+    font-size: 28px;
+}
+
+#Frm{
+    display:none;
+}
+
+.inputSubContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.completed {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-around;
+    background: green;
+    color: #fff;
+}
+
+.inputContainer100C {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.inputContainer100R {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+
+.inputContainer100C select {
+    font-size: .8em;
+}
+
+.inputContainer100R select {
+    font-size: .8em;
+}
+
+.form__label {
+    font-size: .5em;
+}
+
+select{
+    text-align:center;
+}
+
+#congrats {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: var(--vh);
+    z-index: 10;
+    /* display: grid;*/
+    grid-template-rows: auto auto auto;
+    background: #fff;
+}
+
+#congrats-message {
+    background: aliceblue;
+    display: flex;
+    padding: 10px;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#congrats-image {
+    width: 100vw;
+    height: 100vw;
+    background: #fff;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:contain;
+}
+#congrats-button {
+    background: #fff;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.congrats-button_text {
+    border-radius: 25px;
+    background: cyan;
+    padding: 10px 20px;
+}

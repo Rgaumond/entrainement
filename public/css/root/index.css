@@ -1,0 +1,31 @@
+.main{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.user-button{
+  display: flex;
+  width: 100vw;
+  height: 50vh;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.user{
+  font-size: 2em;
+    border: 2px solid blue;
+    width: 80vw;
+    height: 40vh;
+    border-radius: 50px;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    cursor:pointers;
+}

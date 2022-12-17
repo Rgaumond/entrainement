@@ -1,0 +1,48 @@
+﻿.chrono {
+    position: absolute;
+    top: var(--focussedSerieHeight);
+    height: calc(var(--vh) - var(--focussedSerieHeight));
+    display: none;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.chrono__inner {
+    position:relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 9em;
+    width: 100vw;
+    height: 400px;
+}
+.minimizedChrono {
+    width: 50px;
+    height: 50px;
+    font-size: 1em;
+}
+
+.chrono__button {
+    position: absolute;    
+    cursor: pointer;
+}
+
+.closeChrono {
+    top: 0;
+    right: 10px;
+    color: red;
+    font-size: 0.2em;
+}
+
+.reduceChrono {
+    bottom: 0;
+    left: 10px;
+    color: orange;
+    font-size: 0.17em;
+}
+

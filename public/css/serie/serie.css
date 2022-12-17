@@ -1,0 +1,132 @@
+﻿#series-container {
+    width: 100vw;
+/*    height: calc(100vh - 50px);*/
+    overflow: hidden;
+}
+
+.serie-header {
+    display: grid;
+    grid-template-rows: 70px 20px;
+    background: #ccc;
+    color: #fff;
+    height: 90px;
+}
+
+.serie-title {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    height: 70px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#series {
+    /*height = 100% minus 90px (header)*/
+    height: calc(var(--vh) - 90px);
+    overflow: auto;
+}
+
+.serie {
+    display: grid;
+    grid-template-columns: 50px auto auto 50px;
+    font-size: 1.2em;
+    opacity: 0.4;
+    position:relative;
+}
+
+.serie::before{
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .4em;
+    top:0;
+}
+
+.serie > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    height: 60px;
+}
+
+.serie > div > div{
+    text-align:right;
+}
+
+.serie-column-header {
+    display: grid;
+    grid-template-columns: 50px auto auto 50px;
+    font-size: 0.5em;
+}
+
+.serie-column-header >div {
+    text-align:center;
+}
+
+.serie-targetted-unit {
+    color: #000;
+}
+.serie-value-selected {
+    opacity: 1;
+    border-top: 1px solid cyan;
+    border-bottom: 1px solid cyan;
+    padding:10px 0;
+}
+
+.serie-value-selected .weight{
+    font-size: 1.6em;
+}
+
+.serie-value-selected .reps {
+    font-size: 1.6em;
+}
+
+.serie-targetted-unit::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: 4px solid cyan;
+    transform: translate(-50%,-50%);
+    z-index: 0;
+    opacity: 0.5;
+}
+.weight > DIV{
+    position:relative;
+}
+.weight > DIV::after {
+    content: attr(orgweight);
+    position: absolute;
+    font-size: .3em;
+    background: yellow;
+    color: #5918c3;
+    left: 50%;
+    top: 80%;
+    width: 100px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.weight{
+    min-width:100px;
+}
+
+.weight > DIV {
+    z-index: 1;
+}
+.reps {
+    min-width: 100px;
+}
+
+.reps > DIV{
+   z-index:1;
+}
+
