@@ -50,7 +50,8 @@ const validateModif = () => {
     $("label[for='input-name']").css({ color: "red", background: "yellow" });
     pass = false;
   } else {
-    pass = nameDoNotExist();
+    if (exercises.length > 0) pass = nameDoNotExist();
+    else pass = true;
     if ($("#select-movementSelect").val() === "Choose") {
       alert(fetchTranslation("noMovement"));
       $("label[for='movementSelect']").css({

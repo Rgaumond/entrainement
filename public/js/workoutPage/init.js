@@ -43,6 +43,8 @@ const childExercises = () => {
 
 const validName = () => {
   let pass = true;
+  f(workouts.length === 0);
+  return true;
   if ($(`#input-name`).val() === "") {
     alert("Please enter a name");
     pass = false;
