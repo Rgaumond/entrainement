@@ -7,7 +7,7 @@ jQuery(function () {
 const cleanStorage = () => {
   localStorage.clear();
   localStorage.setItem("workoutAction", "workingOut");
-  fetchExercises();
+  //fetchExercises();
   $(".user")
     .on("click", function (e) {
       $(this).css("background-color", "aqua");

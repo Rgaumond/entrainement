@@ -1,6 +1,6 @@
 /* FETCH */
 const fetchExercises = (callback) => {
-  fetch("http://localhost:5500/exercises/", {
+  fetch("../exercises/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user: localStorage.getItem("user") }),
