@@ -1,6 +1,5 @@
 let lang;
 jQuery(function () {
-  handler();
   cleanStorage();
 });
 

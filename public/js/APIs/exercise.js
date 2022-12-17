@@ -10,6 +10,7 @@ const fetchExercises = (callback) => {
       exercises = ArrayUtilities.sortByName(data.exercises);
       localStorage.setItem("exercises", JSON.stringify(exercises));
       if (callback) callback();
+      fetchWorkouts();
     })
     .catch((error) => {
       console.error("There was an error!", error);

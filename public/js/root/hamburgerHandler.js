@@ -37,7 +37,7 @@ const hamburgerCTAs = () => {
         chronoStart(60);
         break;
       case "goHome":
-        window.location.href = "/views/index.html";
+        window.location.href = "../";
         break;
     }
     e.preventDefault();

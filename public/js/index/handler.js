@@ -6,7 +6,7 @@ const handler = () => {
       localStorage.setItem("user", user);
       localStorage.setItem("lang", "E");
       fetchExercises();
-      fetchWorkouts();
+      //fetchWorkouts();
     })
     .on("touchend", function (e) {
       $(this).css("background-color", "antiquewhite");
