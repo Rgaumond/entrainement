@@ -1,6 +1,7 @@
 let lang;
 jQuery(function () {
   cleanStorage();
+  //updateIndex();
 });
 
 const cleanStorage = () => {
@@ -17,4 +18,62 @@ const cleanStorage = () => {
     .on("touchend", function (e) {
       $(this).css("background-color", "antiquewhite");
     });
+};
+
+const updateIndex = () => {
+  fetchExercises2();
+};
+
+const subUpdate = () => {
+  $.each(workouts, (index, wk) => {
+    $.each(wk.exercises, (ind, ex) => {
+      let current = exercises.find((obj) => {
+        return obj._id === ex;
+      });
+      current.index = ind;
+      console.log(current.index);
+      silentExerciseUpdate2(current);
+    });
+  });
+  console.log(exercises);
+};
+
+const fetchExercises2 = (callback) => {
+  fetch("http://localhost:5510/exercises/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user: "richard" }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      exercises = ArrayUtilities.sortByName(data.exercises);
+      fetchWorkouts2();
+    })
+    .catch((error) => {
+      console.error("There was an error!", error);
+    });
+};
+const fetchWorkouts2 = (callback) => {
+  fetch("../workouts/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user: "richard" }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      workouts = ArrayUtilities.sortByName(data.workouts);
+      subUpdate();
+    })
+    .catch((error) => {
+      console.error("There was an error!", error);
+    });
+};
+
+const silentExerciseUpdate2 = (ex) => {
+  exerciseClean();
+  fetch("../exercises/update", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ex),
+  }).then((res) => {});
 };

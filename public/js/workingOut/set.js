@@ -1,29 +1,27 @@
-﻿//let SERIES = [];
-
-const initializeSets = () => {
+﻿const initializeSets = () => {
   let sets = currentExercise.sets;
   $.each(sets, (index, set) => {
     if (!set.lastUpdate) set.completed = false;
-    else if (set.lastUpdate === Date.now()) set.completed = true;
+    else if (set.lastUpdate != currentDay()) set.completed = false;
+    else if (set.lastUpdate === currentDay()) set.completed = true;
+    set.index = index;
   });
   localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
+  printExerciseSets(0, false);
 };
 
-const printExerciseSets = () => {
-  //currentExercise.index = index;
+const printExerciseSets = (index, chrono) => {
   setsViewPrep();
   printSets();
   handleSerieMods();
   let sets = currentExercise.sets;
-  $.each(sets, (index, set) => {
-    if (!set.completed) {
-      directSelect(index, "weight", false);
-      return false;
-    }
-  });
-
-  // printNext();
-  //activeWorkout();
+  directSelect(index, "reps", chrono);
+  // $.each(sets, (index, set) => {
+  //   if (!set.completed) {
+  //     directSelect(index, "reps", false);
+  //     return false;
+  //   }
+  // });
 };
 
 const printSets = (id) => {
@@ -43,17 +41,6 @@ const styleSeries = () => {
     $(el).attr("serieIndex", index);
     if (currentExercise.sets[index].completed)
       $(el).find(".serieStatus").html(faCheckCircle());
-    // currentSet = current.object.exercises.find(obj => { return obj._id === parseInt($(el).attr("serieid")) });
-    // if ($(el).attr("completed") === '1') {
-    //     if (currentSet.Progressed && currentSerie.Progressed===1)
-    //         $(el).children(".serieStatus").html(faGrinStar());
-    //     else
-    //         $(el).children(".serieStatus").html(faCheckCircle());
-    // }
-    // if (parseInt($(el).attr("serieid")) === SELECTED_SERIE._id) {
-    //     $(el).children(".serieStatus").html(faArrowCircle());
-    //     styleSelectedSerie();
-    // }
   });
   //Start witht the first index
   if (!selectedSet) selectedSet = currentExercise.sets[0];
@@ -67,7 +54,6 @@ const directSelect = (selectedSerieIndex, unit, maxChrono) => {
   selectedSet.index = currentSerieIndex;
   unitCaptureInitiated = false;
   styleSelectedSerie(currentSerieIndex);
-  // printExerciseSets();
   defocusUnits();
   focusSelectedSerie(showNumPad);
   focusSelectedUnit();
@@ -130,7 +116,7 @@ const updateSerieUnitValue = (value) => {
 };
 
 const serieChange = (el) => {
-  silentExerciseUpdate();
+  weigthTransfer();
   chronoStart(currentExercise.restInterval);
   if (currentExercise.sets[currentSerieIndex + 1]) fetchNextSerie();
   else fetchNextExercise();
@@ -138,7 +124,7 @@ const serieChange = (el) => {
 
 const fetchNextSerie = () => {
   currentSerieIndex += 1;
-  directSelect(currentSerieIndex, `weight`, true);
+  printExerciseSets(currentSerieIndex, `reps`, true);
 };
 
 const resetSeries = (wrk) => {
@@ -147,32 +133,7 @@ const resetSeries = (wrk) => {
   });
 };
 
-const fetchNextExercise = () => {
-  let nextIndex = Number(currentExercise.index) + 1;
-  if (currentWorkout.exercises[nextIndex]) {
-    currentExercise = exercises.find((obj) => {
-      return obj._id === currentWorkout.exercises[nextIndex];
-    });
-    currentExercise.index = nextIndex;
-    localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
-    printExerciseSets();
-  } else {
-    $("#workout-completed").css("display", "flex");
-    handleCompleted();
-  }
-};
-
 const defocusSelectedSerie = () => {
-  // let seriesToShow = SELECTED_WORKOUT.Series.filter((obj) => {
-  //   return obj._id !== SELECTED_SERIE._id;
-  // });
-  // $.each(seriesToShow, (index, serie) => {
-  //   $(`#serie${serie._id}`).show();
-  // });
-  // $(`.${currentSerieUnit}`, `#serie${SELECTED_SERIE._id}`).removeClass(
-  //   "serie-targetted-unit"
-  // );
-  //  $(`.${currentSerieUnit}`, `#serie${SELECTED_SERIE._id}`).children().css({"opacity":0.5});
   $.each(currentExercise.sets, (index, set) => {
     $(`#serie${index}`).show();
     $(`#serie${index}`).removeClass("serie-value-selected");
@@ -184,98 +145,28 @@ const defocusSelectedSerie = () => {
   styleSeries();
 };
 
-// const styleNewweight = () => {
-//   let hasNewweight = newTargetweight.find((obj) => {
-//     return obj.exerciseID === SELECTED_SERIE.ExerciseID;
-//   });
-//   if (hasNewweight && SELECTED_SERIE.weight !== hasNewweight.newweight) {
-//     $(`.weight > DIV`, `#serie${SELECTED_SERIE._id}`).attr(
-//       "orgweight",
-//       fetchTranslation("newweight")
-//     );
-//     $(`.weight > DIV`, `#serie${SELECTED_SERIE._id}`).html(
-//       hasNewweight.newweight
-//     );
-//   }
-// };
-
-// const updateSelectedSerie = () => {
-//   progress();
-//   SELECTED_SERIE.reps = Number(
-//     $(`#serie${SELECTED_SERIE._id} > [unit=reps] > DIV`).html()
-//   );
-//   SELECTED_SERIE.weight = Number(
-//     $(`#serie${SELECTED_SERIE._id} > [unit=weight] > DIV`).html()
-//   );
-//   SELECTED_SERIE.completed = 1;
-//   SELECTED_SERIE.completedDate = currentDate();
-//   DB.updateWorkout(
-//     WORKOUTS.find((obj) => {
-//       return obj._id === SELECTED_WORKOUT._id;
-//     })
-//   );
-/*
-    $(`#serie${SELECTED_SERIE._id} > .serieStatus`).html(faCheckCircle());
-    destyleSelectedSerie();*/
-// };
-
-// const progress = () => {
-//   SELECTED_SERIE.Progressed = 0;
-//   let newreps = Number(
-//     $(`#serie${SELECTED_SERIE._id} > [unit=reps] > DIV`).html()
-//   );
-//   let newweight = Number(
-//     $(`#serie${SELECTED_SERIE._id} > [unit=weight] > DIV`).html()
-//   );
-//   if (SELECTED_SERIE.reps < newreps && newweight >= SELECTED_SERIE.weight)
-//     SELECTED_SERIE.Progressed = 1;
-//   if (newweight > SELECTED_SERIE.weight) SELECTED_SERIE.Progressed = 1;
-//   else if (newweight < SELECTED_SERIE.weight) SELECTED_SERIE.Progressed = 2;
-//   if (SELECTED_SERIE.Progressed === 1 && ATHLETE !== "QB") {
-//     let targetMessages = bravoMessageRox;
-//     let targetLength = bravoMessageRox.length;
-//     if (ATHLETE === "Jo") {
-//       targetMessages = bravoMessageJoanne;
-//       targetLength = bravoMessageJoanne.length;
-//     }
-//     $("#congrats").css({ display: "grid" });
-//     $("#congrats-message").html(
-//       "BRAVO!!!<br/><br/>" +
-//         targetMessages[randomIntFromInterval(0, targetLength - 1)]
-//     );
-//     $("#congrats-image").css({
-//       "background-image": `url('images/${
-//         bravoGIF[randomIntFromInterval(0, bravoGIF.length - 1)]
-//       }.gif')`,
-//     });
-//     $(".congrats-button_text").html(fetchTranslation("Close"));
-//   }
-
-//if (SELECTED_SERIE.Progressed)
-//    chronoIsProgress = true;
-//else
-//    chronoIsProgress = false;
-
-//   captureNewweight(newweight);
-// };
-
-// const captureNewweight = (newweight) => {
-//   if (
-//     newTargetweight.find((obj) => {
-//       return obj.exerciseID === SELECTED_SERIE.ExerciseID;
-//     })
-//   )
-//     newTargetweight.find((obj) => {
-//       return obj.exerciseID === SELECTED_SERIE.ExerciseID;
-//     }).newweight = newweight;
-//   else
-//     newTargetweight.push({
-//       exerciseID: SELECTED_SERIE.ExerciseID,
-//       newweight: newweight,
-//     });
-// };
-
-// const resetTitles = () => {
-//   $(".titleIndex1").css({ display: "block" });
-//   $(".titleIndex0").css({ display: "block" });
-// };
+const fetchNextExercise = () => {
+  let nextIndex;
+  $.each(currentWorkout.exercises, (index, ex) => {
+    if (currentExercise._id === ex) nextIndex = index + 1;
+  });
+  if (currentWorkout.exercises[nextIndex]) {
+    currentExercise = exercises.find((obj) => {
+      return obj._id === currentWorkout.exercises[nextIndex];
+    });
+    console.log(currentExercise);
+    localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
+    printExerciseSets();
+  } else {
+    $("#workout-completed").css("display", "flex");
+    handleCompleted();
+  }
+};
+const weigthTransfer = () => {
+  $.each(currentExercise.sets, (ind, set) => {
+    if (ind > Number(currentSerieIndex)) {
+      set.weight = selectedSet["weight"];
+    }
+  });
+  silentExerciseUpdate();
+};

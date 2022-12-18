@@ -27,7 +27,6 @@ const loadExercises = () => {
         return obj._id === exID;
       });
       if (ex) {
-        ex.index = index;
         exArr.push(ex);
       } else {
         currentWorkout.exercises.splice(index, 1);

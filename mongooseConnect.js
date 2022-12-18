@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const connection =
   "mongodb+srv://rgaumond:Qk%40qMiJ9TAV%40cv4@cluster0.djc2jgg.mongodb.net/Entrainement";
+//"mongodb://localhost:27017/Entrainement";
 //Db connection
 mongoose.connect(connection, {
   useNewUrlParser: true,

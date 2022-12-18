@@ -9,6 +9,5 @@ jQuery(function () {
   loadHamburger();
   if (exerciseAction === "workingOut") {
     initializeSets();
-    printExerciseSets();
   }
 });
