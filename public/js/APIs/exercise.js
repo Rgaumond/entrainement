@@ -35,7 +35,8 @@ const exerciseUpdate = (ex) => {
 const silentExerciseUpdate = () => {
   exerciseClean();
   currentExercise.sets[currentSerieIndex].completed = true;
-  currentExercise.sets[currentSerieIndex].lastUpdate = Date.now();
+
+  currentExercise.sets[currentSerieIndex].lastUpdate = currentDay();
   fetch("../exercises/update", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -43,7 +44,7 @@ const silentExerciseUpdate = () => {
   }).then((res) => {
     localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
     updateExercisesArray();
-    currentWorkout.lastUpdate = currentDate();
+    currentWorkout.lastUpdate = currentDay();
     if (!workoutUpdated) workoutExerciseUpdate(currentWorkout);
   });
 };
@@ -86,12 +87,11 @@ const exerciseDelete = () => {
 
 const prepareExerciseForProcessing = () => {
   exerciseClean();
-  currentExercise.lastUpdate = currentDate();
+  currentExercise.lastUpdate = currentDay();
   currentExercise.user = localStorage.getItem("user");
   updateSets(currentExercise);
   currentExercise.restInterval = $("#select-restInterval").val();
   currentExercise.name = $("#input-name").val();
-
   currentExercise.movement = $("#select-movementSelect").val();
 };
 
@@ -115,6 +115,9 @@ const exerciseClean = () => {
     delete ex.delete;
     delete ex.index;
     ex.user = localStorage.getItem("user");
+    $.each(ex.sets, (index, set) => {
+      set.completed = false;
+    });
   });
 };
 
