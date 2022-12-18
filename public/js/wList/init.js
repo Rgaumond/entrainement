@@ -3,7 +3,7 @@ let exercises = JSON.parse(localStorage.getItem("exercises"));
 let workouts = JSON.parse(localStorage.getItem("workouts"));
 let currentWorkout;
 jQuery(function () {
-  localStorage.setItem("workoutAction", "workingOut");
+  //localStorage.setItem("workoutAction", "workingOut");
   loadHamburger();
   loadWorkoutList();
 });

@@ -56,7 +56,8 @@ const exerciseAdd = (ex) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      fetchExercises();
+      exercises.push(data.newExercise);
+      localStorage.setItem("exercises", JSON.stringify(exercises));
       window.location.href = "exerciseList.html";
     });
 };
@@ -69,7 +70,14 @@ const exerciseDelete = () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ obj }),
   }).then((res) => {
-    fetchExercises();
+    localStorage.setItem("exerciseAction", "edit");
+    $.each(exercises, (index, ex) => {
+      if (ex._id === currentExercise._id) {
+        exercises.splice(index, 1);
+        return false;
+      }
+    });
+    localStorage.setItem("exercises", JSON.stringify(exercises));
     window.location.href = "exerciseList.html";
   });
 };
@@ -77,6 +85,7 @@ const exerciseDelete = () => {
 const prepareExerciseForProcessing = () => {
   exerciseClean();
   currentExercise.lastUpdate = currentDate();
+  currentExercise.user = localStorage.getItem("user");
   updateSets(currentExercise);
   currentExercise.restInterval = $("#select-restInterval").val();
   currentExercise.name = $("#input-name").val();

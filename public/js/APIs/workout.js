@@ -52,6 +52,8 @@ const workoutAdd = (wk) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      workouts.push(data.newWorkout);
+      localStorage.setItem("workouts", JSON.stringify(workouts));
       localStorage.setItem("workoutAction", "edit");
       window.location.href = "workoutList.html";
     });
@@ -72,7 +74,14 @@ const workoutDelete = () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ obj }),
   }).then((res) => {
-    localStorage.setItem("workoutAction", "workingOut");
+    localStorage.setItem("workoutAction", "edit");
+    $.each(workouts, (index, wrk) => {
+      if (wrk._id === currentWorkout._id) {
+        workouts.splice(index, 1);
+        return false;
+      }
+    });
+    localStorage.setItem("workouts", JSON.stringify(workouts));
     window.location.href = "workoutList.html";
   });
 };

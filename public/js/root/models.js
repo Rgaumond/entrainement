@@ -57,7 +57,7 @@ const updateWorkoutsArray = () => {
   target.name = currentWorkout.name;
   target.active = currentWorkout.active;
   target.completed = currentWorkout.completed;
-  target.lastUpdate.currentWorkout.lastUpdate;
+  target.lastUpdate = currentWorkout.lastUpdate;
   target.completedDate = currentWorkout.completedDate;
   target.exercises = currentWorkout.exercises;
   localStorage.setItem("workouts", JSON.stringify(workouts));
