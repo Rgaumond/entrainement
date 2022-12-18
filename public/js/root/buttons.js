@@ -26,3 +26,7 @@ const faCheckCircle = () => {
 const faCirclePlus = () => {
   return `<svg viewBox="0 0 24 24"  class="faCirclePlus"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>`;
 };
+
+const filterIcon = () => {
+  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8H13M22 8H19" stroke="rgba(0,0,0,0.95)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 16H11M2 16H5" stroke="rgba(0,0,0,0.95)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="16" cy="8" r="3" stroke="rgba(0,0,0,0.95)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle><circle r="3" transform="matrix(-1 0 0 1 8 16)" stroke="rgba(0,0,0,0.95)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle></svg>`;
+};

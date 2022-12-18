@@ -10,7 +10,17 @@ const listLiTemplate = (objArray) => {
 const listContainerTemplate = (type) => {
   return `<div class='list-container-title' ><div class='list-title'>${fetchTranslation(
     type
-  )}</div></div><div class='list-li-container'></div>`;
+  )}</div></div>`;
+};
+
+const buildfilterList = (options) => {
+  let ct = `<div id='select-filter'><ul>`;
+  $.each(options, (index, op) => {
+    ct += `<li onclick="filterList('${op}')" value='${op}'>${op}</li>`;
+  });
+
+  ct += `</ul ></div>`;
+  return ct;
 };
 
 // const sublistContainerTemplate = (type) => {

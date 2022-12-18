@@ -1,4 +1,8 @@
 const listEvent = () => {
+  $("#list-filter-icon").on("click", function (e) {
+    $(this).hide();
+    $("#select-filter").show();
+  });
   $(".list-container li")
     .on("click", function (e) {
       $(this).css("background-color", "aqua");

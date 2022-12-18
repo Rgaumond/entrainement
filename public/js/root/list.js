@@ -1,13 +1,16 @@
 ﻿const printList = (arr, label) => {
-  $(".list-container").html("");
-  $(".list-container").append(listContainerTemplate(label));
+  $(".list-li-container").html("");
+  $(".list-header").append(listContainerTemplate(label));
   $(".list-li-container").append(listLiTemplate(arr));
   $(".list-li-container").attr("obj_type", label);
   $(".list-container").css({ display: "block" });
   $(".list-container").show();
-  listEvent();
   //addLiAttr(obj, currentList.filter); Acitve filter
   $(".list-container-title").append(listFilter(label));
+  $(".list-container-title").append(
+    `<div id='list-filter-icon'>${filterIcon()}</div>`
+  );
+  listEvent();
 };
 
 const printSublist = (arr, type) => {
@@ -27,7 +30,7 @@ const listFilter = (type) => {
       options = ["All", "Active", "Inactive"];
       break;
   }
-  return buildSelect("filter", options, "", "filterList()");
+  return buildfilterList(options);
 };
 
 const printActiveList = (options, title) => {
@@ -78,35 +81,19 @@ const addLiAttr = (ObjArr, targetKey) => {
   });
 };
 
-const filterList = () => {
+const filterList = (value) => {
   $(".list-container li").hide();
-  let filter = $("#select-filter").val();
-  let matched;
-  switch (filter) {
-    case "All":
-      $(".list-container li").show();
+  switch ($(".list-li-container").attr("obj_type")) {
+    case "Exercises":
+      if (value === "All") $(".list-container li").show();
+      else $(`.list-container li[filter='${value}']`).show();
       break;
-    case "Active":
-      $(`.list-container .active1`).show();
+    case "Workouts":
+      $(`.list-container li[filter='${value}']`).show();
       break;
-    case "Inactive":
-      $(`.list-container .active0`).show();
-      break;
-    default:
-      switch ($(".list-li-container").attr("obj_type")) {
-        case "Exercises":
-          $(`.list-container li[filter=${filter}]`).show();
-          break;
-        case "Workouts":
-          matched = WORKOUTS.filter((obj) => {
-            return obj.Filter.includes(filter);
-          });
-          $.each(matched, (i, wrk) => {
-            $(`#li${wrk._id}`).show();
-          });
-          break;
-      }
   }
+  $("#select-filter").hide();
+  $("#list-filter-icon").show();
 };
 
 const backToList = () => {
