@@ -97,3 +97,12 @@ const workoutEnhance = () => {
     wk.temp = "";
   });
 };
+
+const deleteDeadExerciseFromWorkouts = (exID) => {
+  $.each(workouts, (index, wk) => {
+    $.each(wk.exercises, (ind, ex) => {
+      if (ex === exID) wk.exercises.splice(ind, 1);
+    });
+  });
+  localStorage.setItem("workouts", JSON.stringify(workouts));
+};

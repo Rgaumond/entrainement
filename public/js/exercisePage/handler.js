@@ -2,7 +2,10 @@ const modifPageCTAs = () => {
   $(".modif-save").on("click", function () {
     if (validateModif()) {
       if (exerciseAction === "edit") exerciseUpdate(currentExercise);
-      else exerciseAdd(currentExercise);
+      else {
+        addSets();
+        exerciseAdd(currentExercise);
+      }
     }
   });
   $(".modif-delete").on("click", function () {

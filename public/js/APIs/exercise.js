@@ -78,6 +78,7 @@ const exerciseDelete = () => {
       }
     });
     localStorage.setItem("exercises", JSON.stringify(exercises));
+    deleteDeadExerciseFromWorkouts(obj._id);
     window.location.href = "exerciseList.html";
   });
 };

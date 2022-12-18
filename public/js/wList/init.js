@@ -13,20 +13,28 @@ const loadWorkoutList = () => {
 };
 
 const loadExercises = () => {
-  $.each($("li"), (ind, el) => {
-    $(el).hide();
-  });
-  $("#li" + currentWorkout._id).show();
-  let parent = $("#li" + currentWorkout._id).parent();
-  let exArr = [];
-  $.each(currentWorkout.exercises, (index, exID) => {
-    let ex = exercises.find((obj) => {
-      return obj._id === exID;
+  if (currentWorkout.exercises.length === 0)
+    $(".list-li-container").append("No exercises");
+  else {
+    $.each($("li"), (ind, el) => {
+      $(el).hide();
     });
-    ex.index = index;
-    exArr.push(ex);
-  });
-  printSublist(exArr, "exercise");
+    $("#li" + currentWorkout._id).show();
+    let parent = $("#li" + currentWorkout._id).parent();
+    let exArr = [];
+    $.each(currentWorkout.exercises, (index, exID) => {
+      let ex = exercises.find((obj) => {
+        return obj._id === exID;
+      });
+      if (ex) {
+        ex.index = index;
+        exArr.push(ex);
+      } else {
+        currentWorkout.exercises.splice(index, 1);
+      }
+    });
+    printSublist(exArr, "exercise");
+  }
 };
 
 // const applyLanguage = () => {

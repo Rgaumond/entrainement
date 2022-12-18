@@ -91,3 +91,10 @@ const nameDoNotExist = () => {
 const resetAlerts = () => {
   $("label").css({ color: "black", background: "#fff" });
 };
+
+const addSets = () => {
+  let numberOfSets = Number($("#select-numSeries").val());
+  for (let i = 0; i < numberOfSets; i++) {
+    currentExercise.sets.push({ weight: 0, reps: 0 });
+  }
+};
