@@ -13,7 +13,7 @@ $(".numPad__key")
     $(this).css("background-color", "cyan");
     let event = $(this).attr("event");
     if (event === "workoutList") showNextSeries();
-    else if (event === "enter") serieChange();
+    else if (event === "enter") serieChange($(this));
     else if (event === "closePad") {
       closeNumPad();
     } else updateSerieUnitValue($(this).html());

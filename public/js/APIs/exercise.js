@@ -1,4 +1,5 @@
 /* FETCH */
+let workoutUpdated = false;
 const fetchExercises = (callback) => {
   fetch("../exercises/", {
     method: "POST",
@@ -43,7 +44,7 @@ const silentExerciseUpdate = () => {
     localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
     updateExercisesArray();
     currentWorkout.lastUpdate = currentDate();
-    workoutExerciseUpdate(currentWorkout);
+    if (!workoutUpdated) workoutExerciseUpdate(currentWorkout);
   });
 };
 /* ADDING */
@@ -98,8 +99,9 @@ const updateSets = (ex) => {
   let newSet = [];
   let newSetsCount = $("#select-numSeries").val();
   for (let x = 0; x < newSetsCount; x++) {
-    if (ex.sets[x]) newSet.push({ weight: ex.sets[x].weight });
-    else newSet.push({ weight: 0 });
+    if (ex.sets[x])
+      newSet.push({ weight: ex.sets[x].weight, reps: ex.sets[x].reps });
+    else newSet.push({ weight: 0, reps: 0 });
   }
   ex.sets = newSet;
 };

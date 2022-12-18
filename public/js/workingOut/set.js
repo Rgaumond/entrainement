@@ -64,6 +64,7 @@ const directSelect = (selectedSerieIndex, unit, maxChrono) => {
   currentSerieUnit = unit;
   currentSerieIndex = Number(selectedSerieIndex);
   selectedSet = currentExercise.sets[currentSerieIndex];
+  selectedSet.index = currentSerieIndex;
   unitCaptureInitiated = false;
   styleSelectedSerie(currentSerieIndex);
   // printExerciseSets();
@@ -128,7 +129,7 @@ const updateSerieUnitValue = (value) => {
   }
 };
 
-const serieChange = () => {
+const serieChange = (el) => {
   silentExerciseUpdate();
   chronoStart(currentExercise.restInterval);
   if (currentExercise.sets[currentSerieIndex + 1]) fetchNextSerie();

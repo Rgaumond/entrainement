@@ -89,7 +89,12 @@ const filterList = (value) => {
       else $(`.list-container li[filter='${value}']`).show();
       break;
     case "Workouts":
-      $(`.list-container li[filter='${value}']`).show();
+      if (value === "All") $(".list-container li").show();
+      else {
+        if (value === "Active") $(`.list-container li[filter='0']`).show();
+        else $(`.list-container li[filter='1']`).show();
+      }
+
       break;
   }
   $("#select-filter").hide();
