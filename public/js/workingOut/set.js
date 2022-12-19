@@ -85,7 +85,6 @@ const focusSelectedSerie = (callback) => {
     $(`#serie${index}`).hide();
   });
   $(`#serie${currentSerieIndex}`).css({ background: "#fff" }).show();
-  //styleNewweight();
   if (callback) callback();
 };
 
@@ -154,9 +153,8 @@ const fetchNextExercise = () => {
     currentExercise = exercises.find((obj) => {
       return obj._id === currentWorkout.exercises[nextIndex];
     });
-    console.log(currentExercise);
     localStorage.setItem("currentExercise", JSON.stringify(currentExercise));
-    printExerciseSets();
+    printExerciseSets(0, true);
   } else {
     $("#workout-completed").css("display", "flex");
     handleCompleted();

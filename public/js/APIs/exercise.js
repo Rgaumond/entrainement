@@ -97,11 +97,13 @@ const prepareExerciseForProcessing = () => {
 
 const updateSets = (ex) => {
   let newSet = [];
+  let lastRecordedWeight = 0;
   let newSetsCount = $("#select-numSeries").val();
   for (let x = 0; x < newSetsCount; x++) {
-    if (ex.sets[x])
+    if (ex.sets[x]) {
       newSet.push({ weight: ex.sets[x].weight, reps: ex.sets[x].reps });
-    else newSet.push({ weight: 0, reps: 0 });
+      lastRecordedWeight = ex.sets[x].weight;
+    } else newSet.push({ weight: lastRecordedWeight, reps: 0 });
   }
   ex.sets = newSet;
 };
