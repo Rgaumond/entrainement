@@ -45,9 +45,9 @@
         : 0
     );
   },
-  sortSeries(objs) {
+  sortByPropName(objs, propName) {
     return objs.sort((a, b) =>
-      a.SerieNo > b.SerieNo ? 1 : a.SerieNo < b.SerieNo ? -1 : 0
+      a[propName] > b[propName] ? 1 : a[propName] < b[propName] ? -1 : 0
     );
   },
   fetchNextID(arrObj, id) {

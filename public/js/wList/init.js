@@ -9,6 +9,7 @@ jQuery(function () {
 });
 
 const loadWorkoutList = () => {
+  workouts = ArrayUtilities.sortByPropName(workouts, "lastUpdate");
   printList(workouts, "Workouts");
 };
 
