@@ -42,12 +42,17 @@ const fetchExercises2 = (callback) => {
   fetch("http://localhost:5510/exercises/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user: "richard" }),
+    body: JSON.stringify({}),
   })
     .then((res) => res.json())
     .then((data) => {
       exercises = ArrayUtilities.sortByName(data.exercises);
-      fetchWorkouts2();
+      $.each(exercises, (index, ex) => {
+        ex.user = "richard";
+        silentExerciseUpdate2(ex);
+      });
+      console.log(exercises);
+      //fetchWorkouts2();
     })
     .catch((error) => {
       console.error("There was an error!", error);
