@@ -9,7 +9,6 @@ mongoose.connect(connection, {
 });
 const db = mongoose.connection;
 db.on("error", function (error) {
-  z;
   return console.log(error);
 });
 db.once("open", () => {
