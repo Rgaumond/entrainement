@@ -39,7 +39,7 @@ const subUpdate = () => {
 };
 
 const fetchExercises2 = (callback) => {
-  fetch("http://localhost:5510/exercises/", {
+  fetch("../exercises/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({}),
