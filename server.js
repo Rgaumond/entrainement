@@ -2,9 +2,10 @@ const express = require("express");
 const port = process.env.port || 5510;
 const workoutRouter = require("./routes/workout");
 const exerciseRouter = require("./routes/exercise");
-
+const cors = require("cors");
 //Server
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -22,7 +23,6 @@ app.get("/", (req, res) => {
 //     console.log("ROOT");
 //     res.sendFile(__dirname+"/public/name");
 // });
-
 app.listen(port, (err) => {
   if (err) {
     return console.log("ERROR", err);
