@@ -1,5 +1,5 @@
 const express = require("express");
-const port = process.env.port || 5510;
+const port = process.env.PORT || 5510;
 const workoutRouter = require("./routes/workout");
 const exerciseRouter = require("./routes/exercise");
 const cors = require("cors");
